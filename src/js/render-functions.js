@@ -14,7 +14,16 @@ export function renderImages(images) {
 
     // Проходим по каждому изображению из массива изображений
     images.forEach(image => {
-        let cardHtml = `
+
+   // Створюємо посилання для великого зображення з використанням URL largeImageURL
+   const imageLink = document.createElement('a');
+   imageLink.href = image.largeImageURL;
+   imageLink.setAttribute('data-lightbox', 'gallery'); // Додаємо атрибут data-lightbox для SimpleLightbox
+
+//на будущее :Цей код створює посилання для кожного зображення з великою версією зображення та додає його до галереї. Кожне зображення обгортається посиланням, і при кліку на нього відображається велика версія зображення за допомогою бібліотеки SimpleLightbox.
+
+
+        const cardHtml = `
         <div class="card">
         <img src="${image.webformatURL}" alt="${image.tags}">
         <div class="card-details">
@@ -25,6 +34,7 @@ export function renderImages(images) {
         </div>
    </div>
 `;
-galleryContainer.innerHTML += cardHtml;
+imageLink.innerHTML = cardHtml;
+galleryContainer.appendChild(imageLink);
     });
 };
