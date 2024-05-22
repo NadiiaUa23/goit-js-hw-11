@@ -1,14 +1,27 @@
 //У файлі pixabay-api.js зберігай функції для HTTP-запитів
+//мой ключь
 const apiKey = '43983774-8711aa48aacb0ae1050be5e44';
 
+export function fetchImages(searchQuery) {
+    const url = `https://pixabay.com/api/?key=${apiKey}&q=${searchQuery}&image_type=photo&orientation=horizontal&safesearch=true`
 
-fetch("<https://pixabay.com/api/?key=${apiKey}&q=q=${searchQuery}>")
-  .then(response => {
-    // Response handling
-  })
-  .then(data => {
-    // Data handling
-  })
-  .catch(error => {
-    // Error handling
-  });
+    //шлях до даних на бекенд
+ return fetch(url)
+ .then(response => {
+   if (!response.ok) {
+       throw new Error(response.status);
+     }
+     return response.json();
+ })
+ .then(data => {
+    return data.hits;
+ })
+ .catch(error => {
+    console.error('Error fetching images:', error.message);
+    showError('Failed to fetch images. Please try again later.');;
+ });
+}
+
+
+
+
