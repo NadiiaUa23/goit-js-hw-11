@@ -5,6 +5,7 @@ const apiKey = '43983774-8711aa48aacb0ae1050be5e44';
 export function fetchImages(searchQuery) {
     const url = `https://pixabay.com/api/?key=${apiKey}&q=${searchQuery}&image_type=photo&orientation=horizontal&safesearch=true`
 
+
     //шлях до даних на бекенд
  return fetch(url)
  .then(response => {

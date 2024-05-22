@@ -36,6 +36,19 @@
   animation: zeroRotation 1s linear infinite alternate;
 }
 
+
+.loader {
+  display: none;
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.loader.show {
+  display: block;
+}
+
+
 .loader::after,
 .loader::before {
   content: '';
@@ -65,5 +78,7 @@
     transform: scale(0) rotate(360deg);
   }
 }
+
+
 
 /**/

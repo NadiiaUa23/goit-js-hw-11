@@ -15,11 +15,7 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 
 const searchForm = document.getElementById('searchForm');
 const searchInput = document.getElementById('searchInput');
-// const galleryContainer = document.querySelector('.gallery');
-const fetchUsersBtn = document.querySelector(".btn");
-
-
-
+const loader = document.querySelector('.loader');
 
 // Функция для отображения сообщения об ошибке с использованием iziToast
 function showError(message) {
@@ -39,24 +35,33 @@ searchForm.addEventListener('submit', (event) => {
         showError('Please enter a search term');
         return;
     }
-
-    clearGallery();
-    // cssLoader.show();
+      // Показати індикатор завантаження після натискання кнопки
+      loader.classList.add('show');
+      clearGallery();
 
     fetchImages(searchTerm)
         .then(images => {
-            if (images.length === 0) {
-                showError('Sorry, there are no images matching your search query. Please try again!');
-            } else {
-                renderImages(images);
-                searchInput.value = '';
+  // Затримка на 2 секунди перед відображенням результатів
+  setTimeout(() => {
+    // Приховати індикатор завантаження після завершення запиту
+    loader.classList.remove('show');
 
-                // const lightbox = new SimpleLightbox('.gallery a');
-                // lightbox.refresh();   
+    if (images.length === 0) {
+        showError('Sorry, there are no images matching your search query. Please try again!');
+    } else {
+        renderImages(images);
+        searchInput.value = '';
 
-            }
-        })
+        const lightbox = new SimpleLightbox('.gallery a');
+        lightbox.refresh();   
+    }
+}, 2000); // 2 секунди затримки
+})
         .catch(error => {
+
+               // Приховати індикатор завантаження у випадку помилки
+        loader.classList.remove('show');
+
             console.error('Error fetching images:', error.message);
             showError('Failed to fetch images. Please try again later.');
         });

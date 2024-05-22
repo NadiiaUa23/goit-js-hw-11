@@ -24,6 +24,7 @@ export function renderImages(images) {
 
 
         const cardHtml = `
+      
         <div class="card">
         <img src="${image.webformatURL}" alt="${image.tags}">
         <div class="card-details">
@@ -37,4 +38,6 @@ export function renderImages(images) {
 imageLink.innerHTML = cardHtml;
 galleryContainer.appendChild(imageLink);
     });
+
+   
 };
