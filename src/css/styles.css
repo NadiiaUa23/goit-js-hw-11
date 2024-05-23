@@ -24,61 +24,96 @@
   -webkit-text-size-adjust: 100%;
 }
 
-/*1*/
-.loader {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: block;
-  margin: 15px auto;
-  position: relative;
-  box-sizing: border-box;
-  animation: zeroRotation 1s linear infinite alternate;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 }
 
+#searchForm {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+#searchInput {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+  flex-grow: 1;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
 
 .loader {
   display: none;
-  position: relative;
-  width: 50px;
-  height: 50px;
 }
 
 .loader.show {
   display: block;
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 20px auto;
+  position: relative;
+  border: 3px solid #FFF;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: animloader 2s linear infinite;
 }
 
-
-.loader::after,
-.loader::before {
+.loader::after {
   content: '';
   box-sizing: border-box;
+  width: 6px;
+  height: 24px;
+  background: #FFF;
+  transform: rotate(-45deg);
   position: absolute;
-  left: 0;
-  top: 0;
-  background: #34b0f7;
-  width: 16px;
-  height: 16px;
-  transform: translate(-50%, 50%);
-  border-radius: 50%;
+  bottom: -20px;
+  left: 46px;
 }
 
-.loader::before {
-  left: auto;
-  right: 0;
-  transform: translate(50%, 100%);
-}
-
-@keyframes zeroRotation {
+@keyframes animloader {
   0% {
-    transform: scale(1) rotate(0deg);
+    transform: translate(-10px, -10px);
+  }
+
+  25% {
+    transform: translate(-10px, 10px);
+  }
+
+  50% {
+    transform: translate(10px, 10px);
+  }
+
+  75% {
+    transform: translate(10px, -10px);
   }
 
   100% {
-    transform: scale(0) rotate(360deg);
+    transform: translate(-10px, -10px);
   }
 }
-
-
-
-/**/
