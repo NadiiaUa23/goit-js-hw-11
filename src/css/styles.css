@@ -67,6 +67,7 @@ body {
   background-color: #0056b3;
 }
 
+
 .loader {
   display: none;
 }
@@ -116,4 +117,20 @@ body {
   100% {
     transform: translate(-10px, -10px);
   }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.gallery a {
+  text-decoration: none;
+  color: inherit;
 }
