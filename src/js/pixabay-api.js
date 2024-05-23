@@ -15,11 +15,12 @@ export function fetchImages(searchQuery) {
      return response.json();
  })
  .then(data => {
+    //.hits єто название масива на сервере 
     return data.hits;
  })
  .catch(error => {
     console.error('Error fetching images:', error.message);
-    showError('Failed to fetch images. Please try again later.');;
+    throw error;
  });
 }
 

@@ -16,6 +16,7 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 const searchForm = document.getElementById('searchForm');
 const searchInput = document.getElementById('searchInput');
 const loader = document.querySelector('.loader');
+const lightbox = new SimpleLightbox('.gallery a');
 
 // Функция для отображения сообщения об ошибке с использованием iziToast
 function showError(message) {
@@ -51,14 +52,11 @@ searchForm.addEventListener('submit', (event) => {
     } else {
         renderImages(images);
         searchInput.value = '';
-
-        const lightbox = new SimpleLightbox('.gallery a');
         lightbox.refresh();   
     }
 }, 2000); // 2 секунди затримки
 })
         .catch(error => {
-
                // Приховати індикатор завантаження у випадку помилки
         loader.classList.remove('show');
 
